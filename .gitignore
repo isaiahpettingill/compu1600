@@ -1,0 +1,7 @@
+.zig-cache/
+zig-out/
+build/
+target/
+*.exe
+*.so
+*.out
