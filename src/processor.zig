@@ -40,7 +40,7 @@ const Instruction = enum(u4) {
     HALT = 0x0,
     NOP = 0x1,
 
-    MOV = 0x2,
+    CMOV = 0x2,
     PUSH = 0x3,
     POP = 0x4,
     MODE = 0x5,
@@ -51,10 +51,11 @@ const Instruction = enum(u4) {
     AOP = 0xA,
     CMP = 0xB,
     LOP = 0xC,
+    DMOVE = 0xD,
 };
 
 const Conditions = enum(u4) {
-    TT = 0x0,
+    UC = 0x0,
     EQ = 0x1,
     NE = 0x2,
     LT = 0x3,
@@ -63,7 +64,10 @@ const Conditions = enum(u4) {
     GE = 0x6,
 };
 
+const MoveTypes = enum(u4) { RRMOV = 0x0, IRMOV = 0x1, MRMOV = 0x2, MMMOV = 0x3, RMMOV = 0x4, IMMOV = 0x5 };
+
 const BOps = enum(u4) {
+    NOP = 0x0,
     AND = 0x1,
     OR = 0x2,
     NOT = 0x3,
@@ -73,7 +77,7 @@ const BOps = enum(u4) {
     NRHS = 0x7,
 };
 
-const AOps = enum(u4) { ADD = 0x1, SUB = 0x2, DIV = 0x3, MUL = 0x4, MOD = 0x5 };
+const AOps = enum(u4) { NOP = 0x0, ADD = 0x1, SUB = 0x2, DIV = 0x3, MUL = 0x4, MOD = 0x5 };
 
 const LOps = enum(u4) {
     LAND = 0x1,
