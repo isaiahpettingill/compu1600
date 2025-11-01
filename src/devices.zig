@@ -37,10 +37,22 @@ const AudioOutput = struct {
     channel_7: AudioChannel,
 };
 
-const Disk = struct {
-    size: usize,
-    reader: std.io.Reader,
-};
+fn Disk(comptime size: u16) type {
+    return struct {
+        buffer: u8[size],
+
+        const length: u16 = size;
+
+        fn getByteAt(self: @This(), location: u16) !u8 {
+            return self.buffer[location];
+        }
+
+        fn getWordAt(self: @This(), location: u16) !u16 {
+            const result = .{ self.buffer[location], self.buffer[location + 1] };
+            return @bitCast(result);
+        }
+    };
+}
 
 const Ports = struct {
     controller_1: Controller,
@@ -50,9 +62,6 @@ const Ports = struct {
 
     audio_output: AudioOutput,
 
-    cartridge_1: Disk,
-    cartridge_2: Disk,
-    cartridge_3: Disk,
-    cartridge_4: Disk,
-    system: Disk,
+    cartridge_1: Disk(1024 * 64),
+    system: Disk(1024 * 64),
 };

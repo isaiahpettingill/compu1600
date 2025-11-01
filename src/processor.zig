@@ -1,6 +1,13 @@
 const Word = u16;
 
-const Register = enum(u4) { RA = 0, RB = 1, RC = 2, RS = 3, RX = 4, RY = 5 };
+const Register = enum(u4) {
+    RA = 0,
+    RB = 1,
+    RC = 2,
+    RS = 3,
+    RX = 4,
+    RY = 5,
+};
 const Registers = struct {
     ra: Word = 0,
     rb: Word = 0,
@@ -64,7 +71,14 @@ const Conditions = enum(u4) {
     GE = 0x6,
 };
 
-const MoveTypes = enum(u4) { RRMOV = 0x0, IRMOV = 0x1, MRMOV = 0x2, MMMOV = 0x3, RMMOV = 0x4, IMMOV = 0x5 };
+const MoveTypes = enum(u4) {
+    RRMOV = 0x0,
+    IRMOV = 0x1,
+    MRMOV = 0x2,
+    MMMOV = 0x3,
+    RMMOV = 0x4,
+    IMMOV = 0x5,
+};
 
 const BOps = enum(u4) {
     NOP = 0x0,
@@ -77,7 +91,14 @@ const BOps = enum(u4) {
     NRHS = 0x7,
 };
 
-const AOps = enum(u4) { NOP = 0x0, ADD = 0x1, SUB = 0x2, DIV = 0x3, MUL = 0x4, MOD = 0x5 };
+const AOps = enum(u4) {
+    NOP = 0x0,
+    ADD = 0x1,
+    SUB = 0x2,
+    DIV = 0x3,
+    MUL = 0x4,
+    MOD = 0x5,
+};
 
 const LOps = enum(u4) {
     LAND = 0x1,
